@@ -9,6 +9,7 @@ const Stack = createStackNavigator();
 //change
 const App = () => {
   return (
+      //testing something
       <NavigationContainer>
         <Stack.Navigator
             initialRouteName="MainMenu"
