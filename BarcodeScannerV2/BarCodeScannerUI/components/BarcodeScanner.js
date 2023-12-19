@@ -18,11 +18,27 @@ const BarcodeScannerScreen = ({ navigation }) => {
         getBarCodeScannerPermissions();
     }, []);
 
+    const fetchProductDescription = async (barcode) => {
+        try {
+            let response = await fetch(`http://10.0.0.94:3000/product/${barcode}`);
+            if (!response.ok) {
+                throw new Error(`Server responded with status: ${response.status}`);
+            }
+            let json = await response.json();
+            setProductData(json.BrandInfo);
+        } catch (error) {
+            console.error("Error in fetchProductDescription:", error);
+        }
+    };
+
+
+
     const handleBarCodeScanned = ({ type, data }) => {
         console.log(data);
         if (!scanned) {
             setScanned(true);
             setScannedData(currentData => [...currentData, data]);
+            fetchProductDescription(data); // Call fetchProductDescription here
 
         }
     };
@@ -59,6 +75,13 @@ const BarcodeScannerScreen = ({ navigation }) => {
                     </Pressable>
                 </>
             )}
+            {productData && (
+                <Text style={styles.productText}>
+                    Product Brand Information: {productData}
+                </Text>
+            )}
+
+
         </View>
     );
 };
