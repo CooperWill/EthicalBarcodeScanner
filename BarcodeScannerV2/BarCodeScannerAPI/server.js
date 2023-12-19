@@ -18,7 +18,7 @@ const db = mysql.createConnection({
 // Endpoint to get product description by barcode
 app.get('/product/:barcode', (req, res) => {
     const barcode = req.params.barcode;
-    const query = 'SELECT BrandInfo FROM products WHERE productID = ?';
+    const query = 'SELECT ProductName, ProductBrand, BrandEthicalRating, BrandInfo, InfoLink FROM products WHERE productID = ?';
 
     db.query(query, [barcode], (err, result) => {
         if (err) {
@@ -29,10 +29,11 @@ app.get('/product/:barcode', (req, res) => {
         if (result.length > 0) {
             res.json(result[0]);
         } else {
-            res.status(404).send('Product not found');
+            res.json({ message: 'Product not found in the database' }); // Ensure this is JSON
         }
     });
 });
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
