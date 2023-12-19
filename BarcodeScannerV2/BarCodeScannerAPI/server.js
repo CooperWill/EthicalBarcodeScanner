@@ -10,7 +10,7 @@ app.use(express.json());
 const db = mysql.createConnection({
     host: '10.0.0.94',
     user: 'will',
-    password: 'pass',
+    password: '',
     database: 'barcode_database',
     port: 3307
 });
