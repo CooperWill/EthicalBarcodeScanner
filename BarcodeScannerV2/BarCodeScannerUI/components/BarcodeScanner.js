@@ -32,9 +32,6 @@ const BarcodeScannerScreen = ({ navigation }) => {
     };
 
 
-
-
-
     const handleBarCodeScanned = ({ type, data }) => {
         console.log(data);
         if (!scanned) {

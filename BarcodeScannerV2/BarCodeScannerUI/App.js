@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import MainMenuScreen from './components/MainMenu.js';
 import BarcodeScannerScreen from './components/BarcodeScanner.js';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Stack = createStackNavigator();
 //change
