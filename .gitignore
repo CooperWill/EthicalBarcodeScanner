@@ -33,3 +33,4 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+/BarcodeScannerV2/BarCodeScannerAPI/.env
